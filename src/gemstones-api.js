@@ -8,6 +8,6 @@ export function fetchGemstones() {
     return request.get(`${URL}/gemstones`);
     }
 
-    export function fetchGemstone(color) {
-    return request.get(`${URL}/gemstones/${color}`);
+    export function fetchGemstone(id) {
+    return request.get(`${URL}/gemstones/${id}`);
     }
