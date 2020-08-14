@@ -49,3 +49,28 @@ h2 {
   padding: 5px; 
   border: solid 3px pink
 }
+
+.create-gemstone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-a-gemstone-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  padding: 10px;
+}
