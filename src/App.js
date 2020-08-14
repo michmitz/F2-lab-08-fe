@@ -1,40 +1,35 @@
-/* eslint-disable */
-import React from 'react';
-import { fetchGemstones } from './gemstones-api.js';
-import './App.css';
+import React, { Component } from 'react'
+import {
+    BrowserRouter as Router, 
+    Route, 
+    Switch,
+    Link
+} from 'react-router-dom';
+import ListPage from './ListPage.js';
+import CreatePage from './CreatePage.js';
+// import DetailPage from './DetailPage.js';
 
-class App extends React.Component {
-  state = {
-    gemstones: [] 
-  }
-
-  componentDidMount = async () => {
-    const data = await fetchGemstones()
-    
-    this.setState({
-      gemstones: data.body
-    })
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h2>Gemstones:</h2>
-          {
-            this.state.gemstones.map((stone) => {
-              return <div className="gemstones-div">
-                <div>Name: {stone.name}</div>
-                <div>Weight: {stone.weight}</div>
-                <div>Color: {stone.color}</div>
-                <div>Precious: {stone.is_precious ? 'Yes' : 'No'}</div>
-              </div>
-            })
-          }
-        </header>
-        </div>
-    )
+export default class App extends Component {
+    render() {
+        return (
+            <div>
+                <Router>
+                    <Link to='create'>Create</Link>
+                    <Link to='/'>List of Beautiful Gems</Link>
+                    <Switch>
+                        <Route 
+                            path="/" 
+                            exact
+                            render={(routerProps) => <ListPage {...routerProps} />} 
+                        />
+                        <Route 
+                            path="/create" 
+                            exact
+                            render={(routerProps) => <CreatePage {...routerProps} />} 
+                        />
+                    </Switch>
+                </Router>
+            </div>
+        )
+    }
 }
-}
-
-export default App;

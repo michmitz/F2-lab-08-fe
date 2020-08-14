@@ -2,12 +2,16 @@
 
 import request from 'superagent';
 
-const URL = 'https://fathomless-shore-20088.herokuapp.com';
+const URL = process.env.REACT_APP_API_URL;
 
 export function fetchGemstones() {
     return request.get(`${URL}/gemstones`);
-    }
+}
 
-    export function fetchGemstone(id) {
+export function fetchGemstone(id) {
     return request.get(`${URL}/gemstones/${id}`);
-    }
+}
+
+export function createGemstone(gemFormData) {
+    return request.post(`${URL}/gemstones`, gemFormData)
+}
