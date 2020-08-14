@@ -20,7 +20,7 @@ class ListPage extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <section className="App-section">
           <h2>Gemstones:</h2>
           {
             this.state.gemstones.map((stone) => {
@@ -32,7 +32,7 @@ class ListPage extends React.Component {
               </Link>
             })
           }
-        </header>
+        </section>
         </div>
     )
 }

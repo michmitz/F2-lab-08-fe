@@ -49,7 +49,7 @@ export default class CreatePage extends Component {
     
     render() {
         return (
-            <section className="create-gemstone">
+            <section className="App-section">
             <div className="add-a-gemstone-div">
                 <h2>ADD A GEMSTONE</h2>
                 <form onSubmit={this.handleSubmit}>

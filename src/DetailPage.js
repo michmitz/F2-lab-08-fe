@@ -15,15 +15,16 @@ export default class DetailPage extends Component {
       }
     
     
-    
     render() {
         return (
-            <div>
+            <section className='App-section'>
+            <div className='details'>
                 <p>Name: {this.state.gemstone.name}</p>
                 <p>Color: {this.state.gemstone.color}</p>
                 <p>Weight: {this.state.gemstone.weight}</p>
-                <p>Is it precious? {this.state.gemstone.is_precious}</p> 
+                <p>Precious: {this.state.gemstone.is_precious ? 'Yes' : 'No'}</p> 
             </div>
+            </section>
         )
     }
 }
