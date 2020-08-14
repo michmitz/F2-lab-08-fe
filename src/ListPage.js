@@ -2,6 +2,7 @@
 import React from 'react';
 import { fetchGemstones, createGemstone } from './gemstones-api.js';
 import './App.css';
+import { Link } from 'react-router-dom'
 
 class ListPage extends React.Component {
   state = {
@@ -23,12 +24,12 @@ class ListPage extends React.Component {
           <h2>Gemstones:</h2>
           {
             this.state.gemstones.map((stone) => {
-              return <div className="gemstones-div" key={`{stone.id}-{stone.color}`}>
+              return <Link to={`detail/${stone.id}`}  className="gemstones-div" key={`{stone.id}-{stone.color}`}>
                 <div>Name: {stone.name}</div>
                 <div>Weight: {stone.weight}</div>
                 <div>Color: {stone.color}</div>
                 <div>Precious: {stone.is_precious ? 'Yes' : 'No'}</div>
-              </div>
+              </Link>
             })
           }
         </header>
