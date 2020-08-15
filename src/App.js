@@ -14,9 +14,9 @@ export default class App extends Component {
         return (
             <div>
                 <Router>
-                    <Link to='create'>Create</Link>
+                    <Link to='/create'>Create</Link>
                     <Link to='/'>List of Beautiful Gems</Link>
-                    <Link to='/detail/:id'>Details</Link>
+              
                     <Switch>
                         <Route 
                             path="/" 

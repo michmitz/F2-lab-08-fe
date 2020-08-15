@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { createGemstone } from './gemstones-api'
+import { createGemstone, fetchCuts } from './gemstones-api'
 import './App.css'
 
 export default class CreatePage extends Component {
@@ -7,8 +7,18 @@ export default class CreatePage extends Component {
         name: '',
         color: '',
         weight: 1,
-        is_precious: false
+        is_precious: false,
+        cut_id: 1,
+        cuts: []
     }
+
+    componentDidMount = async () => {
+        const cutsData = await fetchCuts()
+    
+        this.setState({
+          cuts: cutsData.body
+        })
+      }
     
     handleSubmit = async (e) => {
         e.preventDefault();
@@ -17,14 +27,16 @@ export default class CreatePage extends Component {
             name: this.state.name,
             color: this.state.color,
             weight: this.state.weight,
-            is_precious: this.state.is_precious
+            is_precious: this.state.is_precious,
+            cut_id: this.state.cut_id
         });
 
         this.setState({
             name: '',
             color: '',
             weight: 1,
-            is_precious: false
+            is_precious: false,
+            cut_style: ''
         })
 
         this.props.history.push('/');
@@ -44,6 +56,10 @@ export default class CreatePage extends Component {
 
     handlePrecious = (e) => {
         this.setState({ is_precious: true });
+    }
+
+    handleCutChange = (e) => {
+        this.setState({ cuts_id: e.target.value })
     }
     
     
@@ -74,6 +90,14 @@ export default class CreatePage extends Component {
                     <label>
                         Weight
                         <input onChange={this.handleWeightChange} type="number" value={this.state.weight}/>
+                    </label>
+                    <label>
+                        Cut Style
+                        <select onChange={this.handleCutChange} value={this.state.cut_id}>
+                            {
+                                this.state.cuts.map((cut) => <option value={cut.cut_id}>{cut.cut_style}</option>)
+                            }
+                        </select>
                     </label>
                     <label>
                         Is it Precious?

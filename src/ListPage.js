@@ -29,6 +29,7 @@ class ListPage extends React.Component {
                 <div>Weight: {stone.weight}</div>
                 <div>Color: {stone.color}</div>
                 <div>Precious: {stone.is_precious ? 'Yes' : 'No'}</div>
+                <div>Cut Style: {stone.cut_style}</div>
               </Link>
             })
           }
