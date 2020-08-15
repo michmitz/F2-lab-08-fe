@@ -17,5 +17,9 @@ export function fetchGemstone(id) {
 }
 
 export function createGemstone(gemFormData) {
-    return request.post(`${URL}/gemstones`, gemFormData)
+    return request.post(`${URL}/gemstones`, gemFormData);
+}
+
+export function deleteGemstone(id) {
+    return request.delete(`${URL}/gemstones/${id}`);
 }

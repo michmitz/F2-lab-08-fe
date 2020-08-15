@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { fetchGemstone } from './gemstones-api.js'
+import { fetchGemstone, deleteGemstone } from './gemstones-api.js'
 
 export default class DetailPage extends Component {
     state = {
@@ -13,6 +13,12 @@ export default class DetailPage extends Component {
           gemstone: data.body
         })
       }
+
+    handleDelete = async () => {
+        await deleteGemstone(this.props.match.params.id);
+
+        this.props.history.push('/');
+    }
     
     
     render() {
@@ -22,7 +28,9 @@ export default class DetailPage extends Component {
                 <p>Name: {this.state.gemstone.name}</p>
                 <p>Color: {this.state.gemstone.color}</p>
                 <p>Weight: {this.state.gemstone.weight}</p>
-                <p>Precious: {this.state.gemstone.is_precious ? 'Yes' : 'No'}</p> 
+                <p>Precious: {this.state.gemstone.is_precious ? 'Yes' : 'No'}</p>
+                <p>Cut Style: {this.state.gemstone.cut_style}</p>
+                <button onClick={this.handleDelete}>Delete?</button> 
             </div>
             </section>
         )
