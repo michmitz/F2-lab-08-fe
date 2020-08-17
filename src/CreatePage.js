@@ -76,15 +76,15 @@ export default class CreatePage extends Component {
                     <label>
                         Color
                         <select onChange={this.handleColorChange} value={this.state.color}>
-                            <option value='red'>Red</option>
-                            <option value='clear'>Clear</option>
-                            <option value='green'>Green</option>
-                            <option value='blue'>Blue</option>
-                            <option value='purple'>Purple</option>
-                            <option value='orange'>Orange</option>
-                            <option value='yellow'>Yellow</option>
-                            <option value='pink'>Pink</option>
-                            <option value='other'>Other</option>
+                            <option value='Red'>Red</option>
+                            <option value='Clear'>Clear</option>
+                            <option value='Green'>Green</option>
+                            <option value='Blue'>Blue</option>
+                            <option value='Purple'>Purple</option>
+                            <option value='Orange'>Orange</option>
+                            <option value='Yellow'>Yellow</option>
+                            <option value='Pink'>Pink</option>
+                            <option value='Other'>Other</option>
                         </select>
                     </label>
                     <label>

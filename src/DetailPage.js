@@ -13,11 +13,24 @@ export default class DetailPage extends Component {
     }
 
     componentDidMount = async () => {
-        const gemData = await fetchGemstone(this.props.match.params.id);
+        const data = await fetchGemstone(this.props.match.params.id);
         const cutsData = await fetchCuts();
+
+        console.log(data)
+
+        const matchingCut = cutsData.body.find(cut => cut.cut_style === data.body.cut_style);
+
+        console.log(matchingCut)
     
         this.setState({
-          cuts: cutsData.body
+          cuts: cutsData.body,
+          name: data.body.name,
+          color: data.body.color,
+          weight: data.body.weight,
+          is_precious: data.body.is_precious,
+          cut: matchingCut.id,
+          gemstone: data.body
+
         })
       }
     
@@ -25,13 +38,16 @@ export default class DetailPage extends Component {
         e.preventDefault();
 
         try {
-        const updatedGemstone = await updateGemstone(this.props.match.params.id, {
+        
+            await updateGemstone(this.props.match.params.id, {
             name: this.state.name,
             color: this.state.color,
             weight: this.state.weight,
             is_precious: this.state.is_precious,
             cut_id: this.state.cut_id
         });
+
+        const updatedGemstone = await fetchGemstone(this.props.match.params.id)
 
         this.setState({
             name: '',
@@ -83,7 +99,6 @@ export default class DetailPage extends Component {
                 <p>Weight: {this.state.gemstone.weight}</p>
                 <p>Precious: {this.state.gemstone.is_precious ? 'Yes' : 'No'}</p>
                 <p>Cut Style: {this.state.gemstone.cut_style}</p>
-                <button onClick={this.handleDelete}>Delete?</button> 
             </div>
             <div className="update-a-gemstone-div">
                 <h2>UPDATE THIS GEMSTONE?</h2>
@@ -95,15 +110,15 @@ export default class DetailPage extends Component {
                     <label>
                         Color
                         <select onChange={this.handleColorChange} value={this.state.color}>
-                            <option value='red'>Red</option>
-                            <option value='clear'>Clear</option>
-                            <option value='green'>Green</option>
-                            <option value='blue'>Blue</option>
-                            <option value='purple'>Purple</option>
-                            <option value='orange'>Orange</option>
-                            <option value='yellow'>Yellow</option>
-                            <option value='pink'>Pink</option>
-                            <option value='other'>Other</option>
+                            <option value='Red'>Red</option>
+                            <option value='Clear'>Clear</option>
+                            <option value='Green'>Green</option>
+                            <option value='Blue'>Blue</option>
+                            <option value='Purple'>Purple</option>
+                            <option value='Orange'>Orange</option>
+                            <option value='Yellow'>Yellow</option>
+                            <option value='Pink'>Pink</option>
+                            <option value='Other'>Other</option>
                         </select>
                     </label>
                     <label>
@@ -123,6 +138,7 @@ export default class DetailPage extends Component {
                         <input type="checkbox" onChange={this.handlePrecious}/>
                     </label>
                     <button>Update!</button>
+                    <button onClick={this.handleDelete}>Delete?</button> 
                 </form>
             </div>
             </section>
