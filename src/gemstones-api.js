@@ -23,3 +23,7 @@ export function createGemstone(gemFormData) {
 export function deleteGemstone(id) {
     return request.delete(`${URL}/gemstones/${id}`);
 }
+
+export function updateGemstone(id, updatedGem) {
+    return request.put(`${URL}/gemstones/${id}`, updatedGem);
+}
