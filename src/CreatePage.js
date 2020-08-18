@@ -59,7 +59,7 @@ export default class CreatePage extends Component {
     }
 
     handleCutChange = (e) => {
-        this.setState({ cuts_id: e.target.value })
+        this.setState({ cut_id: e.target.value })
     }
     
     
@@ -95,7 +95,7 @@ export default class CreatePage extends Component {
                         Cut Style
                         <select onChange={this.handleCutChange} value={this.state.cut_id}>
                             {
-                                this.state.cuts.map((cut) => <option value={cut.cut_id}>{cut.cut_style}</option>)
+                                this.state.cuts.map((cut) => <option value={cut.id}>{cut.cut_style}</option>)
                             }
                         </select>
                     </label>
