@@ -12,7 +12,7 @@ import DetailPage from './DetailPage.js';
 export default class App extends Component {
     render() {
         return (
-            <div>
+            <div className='App-section'>
                 <Router>
                     <Link to='/create'>Create</Link>
                     <Link to='/'>List of Beautiful Gems</Link>

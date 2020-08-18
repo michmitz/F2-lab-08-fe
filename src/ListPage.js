@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import { fetchGemstones, createGemstone } from './gemstones-api.js';
+import { fetchGemstones } from './gemstones-api.js';
 import './App.css';
 import { Link } from 'react-router-dom'
 
@@ -20,7 +20,7 @@ class ListPage extends React.Component {
   render() {
     return (
       <div className="App">
-        <section className="App-section">
+        <section className="general-divider">
           <h2>Gemstones:</h2>
           {
             this.state.gemstones.map((stone) => {

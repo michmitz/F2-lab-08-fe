@@ -92,8 +92,9 @@ export default class DetailPage extends Component {
     
     render() {
         return (
-            <section className="App-section">
+            <section className="general-divider">
             <div className='details'>
+                <h2>Gem Details</h2>
                 <p>Name: {this.state.gemstone.name}</p>
                 <p>Color: {this.state.gemstone.color}</p>
                 <p>Weight: {this.state.gemstone.weight}</p>
@@ -104,11 +105,11 @@ export default class DetailPage extends Component {
                 <h2>UPDATE THIS GEMSTONE?</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Name
+                        Name 
                         <input onChange={this.handleNameChange} type="text" value={this.state.name}/>
                     </label>
                     <label>
-                        Color
+                        Color 
                         <select onChange={this.handleColorChange} value={this.state.color}>
                             <option value='Red'>Red</option>
                             <option value='Clear'>Clear</option>
@@ -122,7 +123,7 @@ export default class DetailPage extends Component {
                         </select>
                     </label>
                     <label>
-                        Weight
+                        Weight 
                         <input onChange={this.handleWeightChange} type="number" value={this.state.weight}/>
                     </label>
                     <label>
@@ -137,8 +138,8 @@ export default class DetailPage extends Component {
                         Is it Precious?
                         <input type="checkbox" onChange={this.handlePrecious}/>
                     </label>
-                    <button>Update!</button>
-                    <button onClick={this.handleDelete}>Delete?</button> 
+                    <button className="update-button">Update!</button>
+                    <button className="delete-button" onClick={this.handleDelete}>Delete?</button> 
                 </form>
             </div>
             </section>

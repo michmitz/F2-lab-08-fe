@@ -65,7 +65,7 @@ export default class CreatePage extends Component {
     
     render() {
         return (
-            <section className="App-section">
+            <section className="general-divider">
             <div className="add-a-gemstone-div">
                 <h2>ADD A GEMSTONE</h2>
                 <form onSubmit={this.handleSubmit}>
@@ -103,7 +103,7 @@ export default class CreatePage extends Component {
                         Is it Precious?
                         <input type="checkbox" onChange={this.handlePrecious}/>
                     </label>
-                    <button>Add to Treasure Chest</button>
+                    <button className="add-button">Add to Treasure Chest</button>
                 </form>
             </div>
             </section>
